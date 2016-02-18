@@ -16,7 +16,7 @@ public class TicTacToeScreen implements ActionListener {
     public JButton button22;
     public JButton button00;
     public JButton button01;
-    private JLabel resultLabel;
+    public JLabel resultLabel;
     public JButton resetButton;
 
     public int turn = 0;
@@ -25,26 +25,42 @@ public class TicTacToeScreen implements ActionListener {
     public void actionPerformed(ActionEvent e) {
         this.turn++;
 
-        JButton theClickedButton = (JButton) e.getSource();
+        Object source = e.getSource();
 
-        if (theClickedButton == this.resetButton) {
-            this.resetGame();
-        } else {
-            theClickedButton.setEnabled(false);
+        if (source instanceof JLabel) {
+            JLabel theClickedLabel = (JLabel)source;
+            //write code to show history of scores.
+        } else if (source instanceof JButton) {
 
-            if ((this.turn % 2) == 0) {
-                theClickedButton.setText("0");
-                if (hasPlayerWon("0")) {
-                    this.disableAllbuttons();
-                    this.resetButton.setVisible(true);
-                    this.resultLabel.setText("Player 0 won!");
-                }
+
+            JButton theClickedButton = (JButton) source;
+
+            if (theClickedButton == this.resetButton) {
+                this.resetGame();
             } else {
-                theClickedButton.setText("X");
-                if (hasPlayerWon("X")) {
-                    this.disableAllbuttons();
+                theClickedButton.setEnabled(false);
+
+                if ((this.turn % 2) == 0) {
+                    theClickedButton.setText("0");
+                    if (hasPlayerWon("0")) {
+                        this.disableAllbuttons();
+                        this.resetButton.setVisible(true);
+                        this.resultLabel.setText("Player 0 won!");
+                        return;
+                    }
+                } else {
+                    theClickedButton.setText("X");
+                    if (hasPlayerWon("X")) {
+                        this.disableAllbuttons();
+                        this.resetButton.setVisible(true);
+                        this.resultLabel.setText("Player X won!");
+                        return;
+                    }
+                }
+
+                if (this.turn == 9) {
+                    this.resultLabel.setText("Match draw!");
                     this.resetButton.setVisible(true);
-                    this.resultLabel.setText("Player X won!");
                 }
             }
         }
