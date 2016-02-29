@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DataSourceManagerImpl" format="xml" hash="1249704553">
+    <data-source source="LOCAL" name="SQLite -" uuid="e8afb7bc-32ab-4506-8ebb-9f0f648e4b63">
+      <driver-ref>sqlite.xerial</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>org.sqlite.JDBC</jdbc-driver>
+      <jdbc-url>jdbc:sqlite:$PROJECT_DIR$/src/codekamp.sqlite</jdbc-url>
+      <libraries />
+    </data-source>
+  </component>
+</project>
