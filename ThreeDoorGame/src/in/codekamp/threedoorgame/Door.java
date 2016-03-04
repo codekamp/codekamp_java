@@ -1,5 +1,7 @@
 package in.codekamp.threedoorgame;
 
+import com.sun.org.apache.xpath.internal.operations.Bool;
+
 import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
@@ -21,6 +23,8 @@ public class Door extends JPanel implements MouseListener {
     private boolean hasTreasure = false;
     private DoorOpenListner listner = null;
 
+    private int result;
+
     public Door() {
         super();
         this.setPreferredSize(new Dimension(200, 300));
@@ -40,8 +44,8 @@ public class Door extends JPanel implements MouseListener {
     public void paint(Graphics g) {
         super.paint(g);
 
-        if(doorOpen) {
-            if(hasTreasure) {
+        if (doorOpen) {
+            if (hasTreasure) {
                 g.drawImage(this.treasureImage, 0, 0, null);
             } else {
                 g.drawImage(this.thulluImage, 0, 0, null);
@@ -57,13 +61,17 @@ public class Door extends JPanel implements MouseListener {
     }
 
     public void open() {
-        this.doorOpen = true;
-        this.repaint();
+        if(!this.doorOpen) {
+            this.doorOpen = true;
+            this.repaint();
+        }
     }
 
     public void close() {
-        this.doorOpen = false;
-        this.repaint();
+        if(this.doorOpen) {
+            this.doorOpen = false;
+            this.repaint();
+        }
     }
 
     public void reset() {
@@ -71,12 +79,16 @@ public class Door extends JPanel implements MouseListener {
         this.close();
     }
 
+    public boolean isOpen() {
+        return this.doorOpen;
+    }
+
     @Override
     public void mouseClicked(MouseEvent e) {
-        if(!this.doorOpen) {
+        if (!this.doorOpen) {
             this.open();
 
-            if(listner != null) {
+            if (listner != null) {
                 this.listner.doorOpened(this.hasTreasure);
             }
         }
@@ -104,5 +116,13 @@ public class Door extends JPanel implements MouseListener {
     @Override
     public void mouseExited(MouseEvent e) {
         //remove highlight code
+    }
+
+    public int getResult() {
+        return result;
+    }
+
+    public void setResult(int result) {
+        this.result = result;
     }
 }

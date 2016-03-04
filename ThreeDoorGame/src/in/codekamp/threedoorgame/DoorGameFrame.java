@@ -36,7 +36,7 @@ public class DoorGameFrame extends JFrame implements ActionListener, DoorOpenLis
 
         this.door1.setDoorOpenListner(this);
         this.door2.setDoorOpenListner(this);
-        this.door3.setDoorOpenListner(this);
+        this.door3.setDoorOpenListner(new Game());
 
         this.panel1.add(door1);
         this.panel2.add(door2);
