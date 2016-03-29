@@ -5,7 +5,7 @@ package in.codekamp.threedoorgame;
  */
 public class Game implements DoorOpenListner {
     public static void main(String[] args) {
-        DoorGameFrame frame = new DoorGameFrame();
+        DoorGameFrame frame = new DoorGameFrame("Hello world!");
         frame.setVisible(true);
     }
 
