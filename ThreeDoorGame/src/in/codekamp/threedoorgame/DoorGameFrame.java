@@ -54,23 +54,16 @@ public class DoorGameFrame extends JFrame implements ActionListener, DoorOpenLis
         this.pack();
     }
 
-    public void treasureFound(Boolean treasureFound) {
-
-    }
-
     @Override
     public void actionPerformed(ActionEvent e) {
-        this.door1.close();
-        this.door2.close();
-        this.door3.close();
+        this.door1.reset();
+        this.door2.reset();
+        this.door3.reset();
 
         this.hideTreasure();
     }
 
     private void hideTreasure() {
-        this.door1.setTreasure(false);
-        this.door2.setTreasure(false);
-        this.door3.setTreasure(false);
 
         Random random = new Random();
         int randomInt = random.nextInt(3);

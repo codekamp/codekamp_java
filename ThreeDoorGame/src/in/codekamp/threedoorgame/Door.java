@@ -15,6 +15,7 @@ import java.io.IOException;
  */
 public class Door extends JPanel implements MouseListener {
 
+
     private BufferedImage doorImage;
     private BufferedImage treasureImage;
     private BufferedImage thulluImage;
@@ -22,8 +23,6 @@ public class Door extends JPanel implements MouseListener {
     private boolean doorOpen = false;
     private boolean hasTreasure = false;
     private DoorOpenListner listner = null;
-
-    private int result;
 
     public Door() {
         super();
@@ -57,6 +56,7 @@ public class Door extends JPanel implements MouseListener {
     }
 
     public void setTreasure(Boolean hasTreasure) {
+
         this.hasTreasure = hasTreasure;
     }
 
@@ -118,11 +118,4 @@ public class Door extends JPanel implements MouseListener {
         //remove highlight code
     }
 
-    public int getResult() {
-        return result;
-    }
-
-    public void setResult(int result) {
-        this.result = result;
-    }
 }
